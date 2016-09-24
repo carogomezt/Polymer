@@ -1,0 +1,22 @@
+<dom-module id="nombre-holamundo">
+  <template >
+    <span>minombre es {{name}}</span>
+  </template>
+  <script>
+    Polymer({
+      is:"nombre-holamundo",
+      properties:{
+        name:{
+          type: String,
+          value: "default",
+          notify: true
+        }
+      },
+      ready: function() {
+        setTimeout(()=>{
+          this.fire("nameChanged")
+        }, 3000)
+      },
+    })
+  </script>
+</dom-module>

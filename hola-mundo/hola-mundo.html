@@ -1,0 +1,63 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./nombre-holamundo.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<!--
+`hola-mundo`
+Muestra un mensaje de hola mundo
+
+@demo demo/index.html
+-->
+
+<dom-module id="hola-mundo">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      paper-button{
+        background-color: var(--paper-red-500);
+        color: white;
+      }
+    </style>
+    <paper-button raised on-click="click"> Click </paper-button>
+
+
+    <h2 id="titulo">Hola <nombre-holamundo name="{{name}}"></nombre-holamundo>, tengo [[edad]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'hola-mundo',
+
+      properties: {
+        name: {
+          type: String,
+        },
+        edad:{
+          type: Number
+        }
+      },
+      listeners:{
+        "nameChanged": "clicked",
+        "click": "clicked"
+      },
+      created: function() {
+        //console.log(this.$.titulo)
+      },
+      ready: function() {
+        // this.$$("nombre-holamundo").addEventListener("nameChanged",()=> this.clicked())
+      },
+      attached: function() {
+      },
+      detached: function() {
+
+      },
+      clicked: function(e) {
+        console.log(e.target)
+        this.name = "Hubo click"
+      }
+    });
+  </script>
+</dom-module>
